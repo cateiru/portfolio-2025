@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { TerminalOutput, TerminalCommand, ProfileData } from '@/types/profile'
+import { generateWelcomeLogo } from '@/utils/logo'
 
 interface TerminalProps {
   profile: ProfileData
@@ -17,23 +18,23 @@ export function Terminal({ profile }: TerminalProps) {
 
   const commands: TerminalCommand[] = [
     {
-      name: '/help',
+      name: 'help',
       description: '利用可能なコマンドを表示します',
       execute: () => {
         return `利用可能なコマンド:
-  /help      - このヘルプを表示
-  /profile   - プロフィール情報を表示
-  /blog      - ブログURLを表示
-  /x         - X (Twitter) URLを表示
-  /twitter   - X (Twitter) URLを表示
-  /clear     - 画面をクリア
-  /whoami    - ユーザー情報を表示
-  /date      - 現在の日時を表示
-  /ls        - 利用可能な情報一覧を表示`
+  help      - このヘルプを表示
+  profile   - プロフィール情報を表示
+  blog      - ブログURLを表示
+  x         - X (Twitter) URLを表示
+  twitter   - X (Twitter) URLを表示
+  clear     - 画面をクリア
+  whoami    - ユーザー情報を表示
+  date      - 現在の日時を表示
+  ls        - 利用可能な情報一覧を表示`
       }
     },
     {
-      name: '/profile',
+      name: 'profile',
       description: 'プロフィール情報を表示',
       execute: () => {
         return `名前: ${profile.name}
@@ -42,28 +43,28 @@ export function Terminal({ profile }: TerminalProps) {
       }
     },
     {
-      name: '/blog',
+      name: 'blog',
       description: 'ブログURLを表示',
       execute: () => {
         return `ブログ: ${profile.blogUrl}`
       }
     },
     {
-      name: '/x',
+      name: 'x',
       description: 'X (Twitter) URLを表示',
       execute: () => {
         return `X (Twitter): ${profile.xUrl}`
       }
     },
     {
-      name: '/twitter',
+      name: 'twitter',
       description: 'X (Twitter) URLを表示',
       execute: () => {
         return `X (Twitter): ${profile.xUrl}`
       }
     },
     {
-      name: '/clear',
+      name: 'clear',
       description: '画面をクリア',
       execute: () => {
         setOutputs([])
@@ -71,35 +72,38 @@ export function Terminal({ profile }: TerminalProps) {
       }
     },
     {
-      name: '/whoami',
+      name: 'whoami',
       description: 'ユーザー情報を表示',
       execute: () => {
         return profile.name
       }
     },
     {
-      name: '/date',
+      name: 'date',
       description: '現在の日時を表示',
       execute: () => {
         return new Date().toLocaleString('ja-JP')
       }
     },
     {
-      name: '/ls',
+      name: 'ls',
       description: '利用可能な情報一覧を表示',
       execute: () => {
-        return `/profile    /blog       /x          /twitter`
+        return `profile    blog       x          twitter`
       }
     }
   ]
 
   useEffect(() => {
     // 初期メッセージを表示
+    const logo = generateWelcomeLogo()
     const welcomeOutput: TerminalOutput = {
       id: 'welcome',
       command: '',
-      output: `Welcome to ${profile.name}'s Portfolio Terminal!
-Type '/help' to see available commands.`,
+      output: `${logo}
+
+Welcome to ${profile.name}'s Portfolio Terminal!
+Type 'help' to see available commands.`,
       timestamp: new Date()
     }
     setOutputs([welcomeOutput])
@@ -111,6 +115,26 @@ Type '/help' to see available commands.`,
       inputRef.current.focus()
     }
   }, [outputs])
+
+  useEffect(() => {
+    // ページロード時とクリック時にフォーカスを当てる
+    const handleClick = () => {
+      if (inputRef.current) {
+        inputRef.current.focus()
+      }
+    }
+
+    document.addEventListener('click', handleClick)
+    
+    // 初期フォーカス
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  }, [])
 
   useEffect(() => {
     // スクロールを最下部に移動
@@ -128,13 +152,13 @@ Type '/help' to see available commands.`,
 
     let output: string
     if (command) {
-      if (commandName === '/clear') {
+      if (commandName === 'clear') {
         command.execute()
         return
       }
       output = command.execute(args)
     } else {
-      output = `Command not found: ${commandName}. Type '/help' for available commands.`
+      output = `Command not found: ${commandName}. Type 'help' for available commands.`
     }
 
     const newOutput: TerminalOutput = {
@@ -193,7 +217,7 @@ Type '/help' to see available commands.`,
       
       <div className="terminal-body">
         {outputs.map((output) => (
-          <div key={output.id} className="terminal-output">
+          <div key={output.id} className="terminal-output" data-id={output.id}>
             {output.command && (
               <div className="terminal-command-line">
                 <span className="terminal-prompt">user@{profile.name}:~$</span>

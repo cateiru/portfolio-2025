@@ -1,6 +1,6 @@
 /* Terminal styles */
 .terminal {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: #0c0c0c;
   font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
@@ -93,6 +93,34 @@
   white-space: pre-wrap;
 }
 
+.terminal-result pre {
+  margin: 0;
+  font-family: inherit;
+}
+
+.terminal-output[data-id="welcome"] .terminal-result {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.terminal-output[data-id="welcome"] .terminal-result div:first-child {
+  background: linear-gradient(45deg, #2bc4cf, #572bcf, #cf2ba1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .terminal-input-form {
   margin-top: 8px;
 }
@@ -120,6 +148,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   background: transparent;
   border: none;
   outline: none;
@@ -127,6 +156,7 @@
   font-family: inherit;
   font-size: inherit;
   caret-color: transparent;
+  z-index: 10;
 }
 
 .terminal-cursor {
