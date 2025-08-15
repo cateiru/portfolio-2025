@@ -3,8 +3,8 @@ import { ProfileData } from '@/types/profile'
 
 const profileData: ProfileData = {
   name: 'cateiru',
-  birthday: '2004年1月1日',
-  affiliation: '大学生',
+  birthday: '2000年10月1日',
+  affiliation: '株式会社はてな',
   blogUrl: 'https://blog.cateiru.com',
   xUrl: 'https://x.com/cateiru'
 }

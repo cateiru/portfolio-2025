@@ -17,6 +17,29 @@ export function Terminal({ profile }: TerminalProps) {
   const terminalRef = useRef<HTMLDivElement>(null)
   const inputFormRef = useRef<HTMLDivElement>(null)
 
+  // URLを検出してリンクに変換する関数
+  const convertUrlsToLinks = (text: string) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g
+    const parts = text.split(urlRegex)
+    
+    return parts.map((part, index) => {
+      if (urlRegex.test(part)) {
+        return (
+          <a 
+            key={index} 
+            href={part} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="terminal-link"
+          >
+            {part}
+          </a>
+        )
+      }
+      return part
+    })
+  }
+
   const commands: TerminalCommand[] = [
     {
       name: 'help',
@@ -51,21 +74,21 @@ export function Terminal({ profile }: TerminalProps) {
       name: 'blog',
       description: 'ブログURLを表示',
       execute: () => {
-        return `ブログ: ${profile.blogUrl}`
+        return profile.blogUrl
       }
     },
     {
       name: 'x',
       description: 'X (Twitter) URLを表示',
       execute: () => {
-        return `X (Twitter): ${profile.xUrl}`
+        return profile.xUrl
       }
     },
     {
       name: 'twitter',
       description: 'X (Twitter) URLを表示',
       execute: () => {
-        return `X (Twitter): ${profile.xUrl}`
+        return profile.xUrl
       }
     },
     {
@@ -235,7 +258,18 @@ Type 'help' to see available commands.`,
 
   const executeCommand = (commandInput: string) => {
     const trimmedCommand = commandInput.trim()
-    if (!trimmedCommand) return
+
+    // 空のコマンドの場合は空の出力で履歴に追加
+    if (!trimmedCommand) {
+      const newOutput: TerminalOutput = {
+        id: Date.now().toString(),
+        command: '',
+        output: '',
+        timestamp: new Date()
+      }
+      setOutputs(prev => [...prev, newOutput])
+      return
+    }
 
     const [commandName, ...args] = trimmedCommand.split(' ')
     const command = commands.find(cmd => cmd.name === commandName)
@@ -308,7 +342,7 @@ Type 'help' to see available commands.`,
       <div className="terminal-body">
         {outputs.map((output) => (
           <div key={output.id} className="terminal-output" data-id={output.id}>
-            {output.command && (
+            {(output.command !== undefined && output.id !== 'logo' && output.id !== 'welcome-text') && (
               <div className="terminal-command-line">
                 <span className="terminal-prompt">user@{profile.name}:~$</span>
                 <span className="terminal-command">{output.command}</span>
@@ -317,7 +351,7 @@ Type 'help' to see available commands.`,
             {output.output && (
               <div className="terminal-result">
                 {output.output.split('\n').map((line, index) => (
-                  <div key={index}>{line}</div>
+                  <div key={index}>{convertUrlsToLinks(line)}</div>
                 ))}
               </div>
             )}

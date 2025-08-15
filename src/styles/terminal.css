@@ -96,6 +96,18 @@
   user-select: text;
 }
 
+.terminal-link {
+  color: #88c0d0;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.terminal-link:hover {
+  color: #81a1c1;
+  text-decoration: underline;
+}
+
 .terminal-result pre {
   margin: 0;
   font-family: inherit;
