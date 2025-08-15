@@ -2,10 +2,10 @@
 .terminal {
   width: 100vw;
   height: 100vh;
-  background: #2e3440;
+  background: var(--terminal-background);
   font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
   font-size: 14px;
-  color: #d8dee9;
+  color: var(--terminal-text);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@
   padding: 16px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #4c566a transparent;
+  scrollbar-color: var(--terminal-scrollbar) transparent;
   user-select: text;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .terminal-body::-webkit-scrollbar-thumb {
-  background: #4c566a;
+  background: var(--terminal-scrollbar);
   border-radius: 4px;
 }
 
@@ -78,18 +78,18 @@
 }
 
 .terminal-prompt {
-  color: #a3be8c;
+  color: var(--terminal-prompt);
   font-weight: bold;
   user-select: none;
 }
 
 .terminal-command {
-  color: #eceff4;
+  color: var(--terminal-text-bright);
   user-select: text;
 }
 
 .terminal-result {
-  color: #d8dee9;
+  color: var(--terminal-text);
   line-height: 1.5;
   margin-left: 0;
   white-space: pre-wrap;
@@ -97,14 +97,14 @@
 }
 
 .terminal-link {
-  color: #88c0d0;
+  color: var(--terminal-link);
   text-decoration: underline;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .terminal-link:hover {
-  color: #81a1c1;
+  color: var(--terminal-link-hover);
   text-decoration: underline;
 }
 
@@ -116,7 +116,7 @@
 .terminal-output[data-id="logo"] .terminal-result {
   text-align: left;
   margin-bottom: 16px;
-  background: linear-gradient(45deg, #8fbcbb, #88c0d0, #81a1c1, #5e81ac);
+  background: linear-gradient(45deg, var(--terminal-gradient-1), var(--terminal-gradient-2), var(--terminal-gradient-3), var(--terminal-gradient-4));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -127,7 +127,7 @@
 .terminal-output[data-id="welcome-text"] .terminal-result {
   text-align: left;
   margin-bottom: 16px;
-  color: #d8dee9;
+  color: var(--terminal-text);
 }
 
 @keyframes gradient-shift {
@@ -155,7 +155,7 @@
 }
 
 .terminal-input-text {
-  color: #eceff4;
+  color: var(--terminal-text-bright);
   font-family: inherit;
   font-size: inherit;
   white-space: pre;
@@ -179,7 +179,7 @@
 }
 
 .terminal-cursor {
-  color: #a3be8c;
+  color: var(--terminal-cursor);
   animation: blink 1s infinite;
   font-weight: normal;
 }
@@ -198,7 +198,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #2e3440;
+  background: var(--terminal-background);
 }
 
 .layout-main {
@@ -219,14 +219,14 @@
 
 /* Theme toggle adjustments for terminal theme */
 .theme-toggle {
-  background: #3b4252;
-  border: 1px solid #4c566a;
-  color: #d8dee9;
+  background: var(--nord1);
+  border: 1px solid var(--nord3);
+  color: var(--terminal-text);
 }
 
 .theme-toggle:hover {
-  background: #434c5e;
-  border-color: #a3be8c;
+  background: var(--nord2);
+  border-color: var(--terminal-prompt);
 }
 
 /* Responsive design for terminal */

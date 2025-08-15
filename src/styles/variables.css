@@ -1,5 +1,47 @@
 :root {
-  /* Claude Code inspired color palette */
+  /* Nord Theme Colors */
+  
+  /* Polar Night (Dark Backgrounds) */
+  --nord0: #2e3440;  /* Darkest background */
+  --nord1: #3b4252;  /* Dark background */
+  --nord2: #434c5e;  /* Medium dark background */
+  --nord3: #4c566a;  /* Light dark background */
+
+  /* Snow Storm (Light/Neutral) */
+  --nord4: #d8dee9;  /* Light text */
+  --nord5: #e5e9f0;  /* Lighter text */
+  --nord6: #eceff4;  /* Lightest text */
+
+  /* Frost (Blue/Teal Accents) */
+  --nord7: #8fbcbb;  /* Teal */
+  --nord8: #88c0d0;  /* Light blue */
+  --nord9: #81a1c1;  /* Medium blue */
+  --nord10: #5e81ac; /* Dark blue */
+
+  /* Aurora (Vibrant Accents) */
+  --nord11: #bf616a; /* Red */
+  --nord12: #d08770; /* Orange */
+  --nord13: #ebcb8b; /* Yellow */
+  --nord14: #a3be8c; /* Green */
+  --nord15: #b48ead; /* Purple */
+
+  /* Terminal Semantic Colors */
+  --terminal-background: var(--nord0);
+  --terminal-text: var(--nord4);
+  --terminal-text-bright: var(--nord6);
+  --terminal-prompt: var(--nord14);
+  --terminal-link: var(--nord8);
+  --terminal-link-hover: var(--nord9);
+  --terminal-cursor: var(--nord14);
+  --terminal-scrollbar: var(--nord3);
+  
+  /* Gradient Colors */
+  --terminal-gradient-1: var(--nord7);
+  --terminal-gradient-2: var(--nord8);
+  --terminal-gradient-3: var(--nord9);
+  --terminal-gradient-4: var(--nord10);
+
+  /* Claude Code inspired color palette (kept for compatibility) */
   --color-background-light: 255 255 255;
   --color-background-dark: 9 9 11;
   --color-foreground-light: 23 23 23;
