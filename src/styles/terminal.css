@@ -1,0 +1,202 @@
+/* Terminal styles */
+.terminal {
+  width: 100%;
+  height: 100vh;
+  background: #0c0c0c;
+  font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  font-size: 14px;
+  color: #00ff00;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  display: none;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.terminal-button.close {
+  background: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background: #27ca3f;
+}
+
+.terminal-title {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.terminal-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+.terminal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.terminal-output {
+  margin-bottom: 8px;
+}
+
+.terminal-command-line {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.terminal-prompt {
+  color: #00ff00;
+  font-weight: bold;
+  user-select: none;
+}
+
+.terminal-command {
+  color: #ffffff;
+}
+
+.terminal-result {
+  color: #cccccc;
+  line-height: 1.5;
+  margin-left: 0;
+  white-space: pre-wrap;
+}
+
+.terminal-input-form {
+  margin-top: 8px;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-input-container {
+  flex: 1;
+  position: relative;
+}
+
+.terminal-input-text {
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre;
+}
+
+.terminal-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: transparent;
+}
+
+.terminal-cursor {
+  color: #00ff00;
+  animation: blink 1s infinite;
+  font-weight: normal;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Layout adjustments for terminal */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #0c0c0c;
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+}
+
+.layout-header {
+  display: none;
+}
+
+.layout-footer {
+  display: none;
+}
+
+/* Theme toggle adjustments for terminal theme */
+.theme-toggle {
+  background: #333;
+  border: 1px solid #555;
+  color: #fff;
+}
+
+.theme-toggle:hover {
+  background: #444;
+  border-color: #00ff00;
+}
+
+/* Responsive design for terminal */
+@media (max-width: 768px) {
+  .terminal {
+    font-size: 13px;
+  }
+  
+  .terminal-body {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    font-size: 12px;
+  }
+  
+  .terminal-body {
+    padding: 8px;
+  }
+}

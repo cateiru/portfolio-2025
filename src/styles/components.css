@@ -1,0 +1,214 @@
+/* ProfileCard styles */
+.profile-card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.profile-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.profile-name {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-2);
+}
+
+.profile-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--muted-foreground);
+  font-weight: 500;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  background: var(--muted);
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.info-item:hover {
+  background: var(--border);
+}
+
+.info-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* LinkButton styles */
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-6);
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+.link-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  background: var(--accent);
+  filter: brightness(1.1);
+}
+
+.link-button:active {
+  transform: translateY(0);
+}
+
+.link-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.link-button.variant-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.link-button.variant-outline:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-8);
+}
+
+.social-links-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--spacing-4);
+  text-align: center;
+}
+
+/* ThemeToggle styles */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.theme-toggle:hover {
+  background: var(--border);
+  border-color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--foreground);
+}
+
+/* Layout styles */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background);
+}
+
+.layout-header {
+  padding: var(--spacing-4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-4);
+}
+
+.layout-footer {
+  padding: var(--spacing-4);
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: var(--font-size-sm);
+  border-top: 1px solid var(--border);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .profile-card {
+    padding: var(--spacing-6);
+    margin: 0 var(--spacing-4);
+  }
+  
+  .profile-name {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .info-item {
+    flex-direction: column;
+    gap: var(--spacing-2);
+    text-align: center;
+  }
+  
+  .layout-main {
+    padding: var(--spacing-4);
+  }
+}
