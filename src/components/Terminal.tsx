@@ -15,6 +15,7 @@ export function Terminal({ profile }: TerminalProps) {
   const [historyIndex, setHistoryIndex] = useState(-1)
   const inputRef = useRef<HTMLInputElement>(null)
   const terminalRef = useRef<HTMLDivElement>(null)
+  const inputFormRef = useRef<HTMLDivElement>(null)
 
   const commands: TerminalCommand[] = [
     {
@@ -203,6 +204,35 @@ Type 'help' to see available commands.`,
     }
   }, [outputs])
 
+  useEffect(() => {
+    // コマンド入力時の自動スクロール（デバウンス付き）
+    const scrollToInputIfNeeded = () => {
+      if (!inputFormRef.current || !terminalRef.current) return
+
+      const inputFormRect = inputFormRef.current.getBoundingClientRect()
+      const terminalRect = terminalRef.current.getBoundingClientRect()
+      
+      // 入力フォームがターミナルの表示範囲外にある場合
+      const isInputFormVisible = 
+        inputFormRect.bottom <= terminalRect.bottom &&
+        inputFormRect.top >= terminalRect.top
+
+      if (!isInputFormVisible) {
+        // 入力フォームまでスムーズにスクロール
+        inputFormRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'nearest'
+        })
+      }
+    }
+
+    // デバウンス処理
+    const timeoutId = setTimeout(scrollToInputIfNeeded, 100)
+    
+    return () => clearTimeout(timeoutId)
+  }, [currentCommand])
+
   const executeCommand = (commandInput: string) => {
     const trimmedCommand = commandInput.trim()
     if (!trimmedCommand) return
@@ -294,7 +324,7 @@ Type 'help' to see available commands.`,
           </div>
         ))}
         
-        <form onSubmit={handleSubmit} className="terminal-input-form">
+        <form onSubmit={handleSubmit} className="terminal-input-form" ref={inputFormRef}>
           <div className="terminal-input-line">
             <span className="terminal-prompt">user@{profile.name}:~$</span>
             <div className="terminal-input-container">
