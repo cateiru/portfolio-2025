@@ -98,18 +98,21 @@
   font-family: inherit;
 }
 
-.terminal-output[data-id="welcome"] .terminal-result {
+.terminal-output[data-id="logo"] .terminal-result {
   text-align: left;
   margin-bottom: 16px;
-}
-
-.terminal-output[data-id="welcome"] .terminal-result div:first-child {
   background: linear-gradient(45deg, #2bc4cf, #572bcf, #cf2ba1);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 200%;
   animation: gradient-shift 3s ease-in-out infinite;
+}
+
+.terminal-output[data-id="welcome-text"] .terminal-result {
+  text-align: left;
+  margin-bottom: 16px;
+  color: #cccccc;
 }
 
 @keyframes gradient-shift {

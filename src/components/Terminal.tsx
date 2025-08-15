@@ -97,16 +97,20 @@ export function Terminal({ profile }: TerminalProps) {
   useEffect(() => {
     // 初期メッセージを表示
     const logo = generateWelcomeLogo()
-    const welcomeOutput: TerminalOutput = {
-      id: 'welcome',
+    const logoOutput: TerminalOutput = {
+      id: 'logo',
       command: '',
-      output: `${logo}
-
-Welcome to ${profile.name}'s Portfolio Terminal!
+      output: logo,
+      timestamp: new Date()
+    }
+    const welcomeOutput: TerminalOutput = {
+      id: 'welcome-text',
+      command: '',
+      output: `Welcome to ${profile.name}'s Portfolio Terminal!
 Type 'help' to see available commands.`,
       timestamp: new Date()
     }
-    setOutputs([welcomeOutput])
+    setOutputs([logoOutput, welcomeOutput])
   }, [profile.name])
 
   useEffect(() => {
