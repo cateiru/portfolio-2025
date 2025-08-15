@@ -30,7 +30,11 @@ export function Terminal({ profile }: TerminalProps) {
   clear     - 画面をクリア
   whoami    - ユーザー情報を表示
   date      - 現在の日時を表示
-  ls        - 利用可能な情報一覧を表示`
+  ls        - 利用可能な情報一覧を表示
+  w         - システム情報を表示
+  pwd       - 現在のディレクトリパスを表示
+  echo      - 引数をそのまま出力
+  exit      - ターミナルを終了（タブを閉じる）`
       }
     },
     {
@@ -90,6 +94,39 @@ export function Terminal({ profile }: TerminalProps) {
       description: '利用可能な情報一覧を表示',
       execute: () => {
         return `profile    blog       x          twitter`
+      }
+    },
+    {
+      name: 'w',
+      description: 'システム情報を表示',
+      execute: () => {
+        const uptime = Math.floor(Date.now() / 1000 / 60) // 分単位のアップタイム
+        const loadAvg = (Math.random() * 2).toFixed(2)
+        return ` ${new Date().toLocaleTimeString('ja-JP')}  up ${uptime} min,  1 user,  load average: ${loadAvg}, ${(Math.random() * 2).toFixed(2)}, ${(Math.random() * 2).toFixed(2)}
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+${profile.name}   console  -                ${new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })}     0.00s  0.00s  0.00s portfolio-terminal`
+      }
+    },
+    {
+      name: 'exit',
+      description: 'ターミナルを終了（タブを閉じる）',
+      execute: () => {
+        window.close()
+        return 'ターミナルを終了しています...'
+      }
+    },
+    {
+      name: 'echo',
+      description: '引数をそのまま出力',
+      execute: (args: string[]) => {
+        return args.join(' ')
+      }
+    },
+    {
+      name: 'pwd',
+      description: '現在のディレクトリパスを表示',
+      execute: () => {
+        return `/home/${profile.name.toLowerCase()}/portfolio`
       }
     }
   ]
