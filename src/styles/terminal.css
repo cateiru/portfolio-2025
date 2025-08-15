@@ -51,6 +51,7 @@
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #4c566a transparent;
+  user-select: text;
 }
 
 .terminal-body::-webkit-scrollbar {
@@ -84,6 +85,7 @@
 
 .terminal-command {
   color: #eceff4;
+  user-select: text;
 }
 
 .terminal-result {
@@ -91,6 +93,7 @@
   line-height: 1.5;
   margin-left: 0;
   white-space: pre-wrap;
+  user-select: text;
 }
 
 .terminal-result pre {
@@ -144,6 +147,7 @@
   font-family: inherit;
   font-size: inherit;
   white-space: pre;
+  user-select: text;
 }
 
 .terminal-input {

@@ -158,14 +158,32 @@ Type 'help' to see available commands.`,
   }, [outputs])
 
   useEffect(() => {
-    // ページロード時とクリック時にフォーカスを当てる
-    const handleClick = () => {
-      if (inputRef.current) {
+    // ページロード時とクリック時にフォーカスを当てる（ただし、テキスト選択中は除く）
+    const handleClick = (event: MouseEvent) => {
+      // テキスト選択中かどうかをチェック
+      const selection = window.getSelection()
+      const hasTextSelection = selection && selection.toString().length > 0
+      
+      // テキスト選択中でない場合のみフォーカスを当てる
+      if (!hasTextSelection && inputRef.current) {
         inputRef.current.focus()
       }
     }
 
+    const handleMouseUp = () => {
+      // マウスアップ時に選択があるかチェックし、なければフォーカスを当てる
+      setTimeout(() => {
+        const selection = window.getSelection()
+        const hasTextSelection = selection && selection.toString().length > 0
+        
+        if (!hasTextSelection && inputRef.current) {
+          inputRef.current.focus()
+        }
+      }, 10) // 少し遅延させて選択状態を正確に取得
+    }
+
     document.addEventListener('click', handleClick)
+    document.addEventListener('mouseup', handleMouseUp)
     
     // 初期フォーカス
     if (inputRef.current) {
@@ -174,6 +192,7 @@ Type 'help' to see available commands.`,
 
     return () => {
       document.removeEventListener('click', handleClick)
+      document.removeEventListener('mouseup', handleMouseUp)
     }
   }, [])
 
