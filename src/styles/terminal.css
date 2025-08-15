@@ -2,10 +2,10 @@
 .terminal {
   width: 100vw;
   height: 100vh;
-  background: #0c0c0c;
+  background: #2e3440;
   font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
   font-size: 14px;
-  color: #00ff00;
+  color: #d8dee9;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -50,7 +50,7 @@
   padding: 16px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #333 transparent;
+  scrollbar-color: #4c566a transparent;
 }
 
 .terminal-body::-webkit-scrollbar {
@@ -62,7 +62,7 @@
 }
 
 .terminal-body::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #4c566a;
   border-radius: 4px;
 }
 
@@ -77,17 +77,17 @@
 }
 
 .terminal-prompt {
-  color: #00ff00;
+  color: #a3be8c;
   font-weight: bold;
   user-select: none;
 }
 
 .terminal-command {
-  color: #ffffff;
+  color: #eceff4;
 }
 
 .terminal-result {
-  color: #cccccc;
+  color: #d8dee9;
   line-height: 1.5;
   margin-left: 0;
   white-space: pre-wrap;
@@ -101,18 +101,18 @@
 .terminal-output[data-id="logo"] .terminal-result {
   text-align: left;
   margin-bottom: 16px;
-  background: linear-gradient(45deg, #2bc4cf, #572bcf, #cf2ba1);
+  background: linear-gradient(45deg, #8fbcbb, #88c0d0, #81a1c1, #5e81ac);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
+  background-size: 300% 300%;
   animation: gradient-shift 3s ease-in-out infinite;
 }
 
 .terminal-output[data-id="welcome-text"] .terminal-result {
   text-align: left;
   margin-bottom: 16px;
-  color: #cccccc;
+  color: #d8dee9;
 }
 
 @keyframes gradient-shift {
@@ -140,7 +140,7 @@
 }
 
 .terminal-input-text {
-  color: #ffffff;
+  color: #eceff4;
   font-family: inherit;
   font-size: inherit;
   white-space: pre;
@@ -163,7 +163,7 @@
 }
 
 .terminal-cursor {
-  color: #00ff00;
+  color: #a3be8c;
   animation: blink 1s infinite;
   font-weight: normal;
 }
@@ -182,7 +182,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0c0c0c;
+  background: #2e3440;
 }
 
 .layout-main {
@@ -203,14 +203,14 @@
 
 /* Theme toggle adjustments for terminal theme */
 .theme-toggle {
-  background: #333;
-  border: 1px solid #555;
-  color: #fff;
+  background: #3b4252;
+  border: 1px solid #4c566a;
+  color: #d8dee9;
 }
 
 .theme-toggle:hover {
-  background: #444;
-  border-color: #00ff00;
+  background: #434c5e;
+  border-color: #a3be8c;
 }
 
 /* Responsive design for terminal */
