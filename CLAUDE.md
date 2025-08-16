@@ -18,8 +18,14 @@ pnpm build
 # プロダクションサーバー起動
 pnpm start
 
-# ESLintチェック
+# ESLintチェック（Next.js固有ルールのみ）
 pnpm lint
+
+# Biomeでコードフォーマット・リント（推奨）
+pnpm biome:check      # 全体チェック
+pnpm biome:format     # フォーマット実行
+pnpm biome:lint       # リンティング実行
+pnpm biome:fix        # 自動修正適用
 ```
 
 ## アーキテクチャ
@@ -53,7 +59,7 @@ pnpm lint
 ## 重要な実装パターン
 
 ### ターミナルコマンドの追加
-新しいコマンドを追加する場合は、`Terminal.tsx`の`commands`配列に以下の形式で追加：
+新しいコマンドを追加する場合は、`src/utils/terminal-commands.ts`の`createTerminalCommands`関数内に以下の形式で追加：
 ```typescript
 {
   name: 'コマンド名',
@@ -65,12 +71,47 @@ pnpm lint
 }
 ```
 
+既存コマンド: help, profile, blog, x/twitter, brand, clear, whoami, date, ls, w, exit, echo, pwd
+
 ### 自動フォーカス制御
 テキスト選択を阻害しないよう、選択中は自動フォーカスを無効化する仕組みを実装。
 
 ### 自動スクロール
 `currentCommand`の変更を監視し、デバウンス処理付きで入力フォームが見える位置まで自動スクロール。
 
+## コード品質とフォーマット
+
+このプロジェクトはBiome v2を使用してコードフォーマットとリンティングを行います：
+
+- **Biome**: 高速なJavaScript/TypeScriptフォーマッター・リンター（推奨）
+- **ESLint**: Next.js固有のルールのみ（Biomeと重複するルールは無効化済み）
+- **設定ファイル**: `biome.json`でプロジェクト固有の設定を管理
+- **VS Code**: 保存時の自動フォーマット設定済み（`.vscode/settings.json`）
+
 ## プロフィール情報の更新
 
 `src/app/page.tsx`の`profileData`オブジェクトを編集してプロフィール情報を変更できます。
+
+## ターミナルアーキテクチャの詳細
+
+### ステート管理
+- `outputs`: 出力履歴の配列（TerminalOutput[]）
+- `currentCommand`: 現在入力中のコマンド文字列
+- `commandHistory`: コマンド履歴（↑↓キーでナビゲーション）
+- `historyIndex`: 履歴ナビゲーション用インデックス
+
+### コマンド実行フロー
+1. `createTerminalCommands(profile)`: プロフィール情報を基にコマンド配列を生成
+2. `findCommand(commands, commandName)`: コマンド名から対応する関数を検索
+3. `command.execute(args)`: コマンド実行と結果取得
+4. 特別なコマンド処理: `clear`コマンドは`__CLEAR_TERMINAL__`を返して画面クリア
+
+### テキスト処理パイプライン
+1. `convertUrlsToLinks()`: URL検出とリンク化
+2. `convertColorCodes()`: ANSIカラーコード変換
+3. `convertTextContent()`: 統合処理パイプライン
+
+### レスポンシブ機能
+- テキスト選択時の自動フォーカス無効化
+- 入力フォームの自動スクロール（デバウンス処理付き）
+- キーボードナビゲーション（↑↓で履歴、Enter で実行）

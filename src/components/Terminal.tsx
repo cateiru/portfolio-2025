@@ -207,7 +207,7 @@ Type 'help' to see available commands.`,
             {output.output && (
               <div className="terminal-result">
                 {output.output.split("\n").map((line, index) => (
-                  <div key={`${output.id}-line-${index}`}>{convertTextContent(line)}</div>
+                  <p key={`${output.id}-line-${index}`}>{convertTextContent(line)}</p>
                 ))}
               </div>
             )}

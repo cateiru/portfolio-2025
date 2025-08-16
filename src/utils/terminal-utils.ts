@@ -68,13 +68,23 @@ export const convertColorCodes = (text: string): (string | ReactElement)[] => {
 }
 
 /**
+ * スペースを非破断スペースに変換する関数
+ */
+export const convertSpacesToNbsp = (text: string): string => {
+  return text.replace(/ /g, "\u00A0")
+}
+
+/**
  * URLとカラーコードの両方を処理する関数
  */
 export const convertTextContent = (text: string): (string | ReactElement)[] => {
-  // まずURLを処理
-  const urlProcessed = convertUrlsToLinks(text)
+  // まずスペースを非破断スペースに変換
+  const spaceProcessed = convertSpacesToNbsp(text)
 
-  // 次にカラーコードを処理（文字列の部分のみ）
+  // 次にURLを処理
+  const urlProcessed = convertUrlsToLinks(spaceProcessed)
+
+  // 最後にカラーコードを処理（文字列の部分のみ）
   return urlProcessed.flatMap((part, index) => {
     if (typeof part === "string") {
       return convertColorCodes(part).map((colorPart, colorIndex) => {
