@@ -4,6 +4,18 @@ export interface ProfileData {
   affiliation: string
   blogUrl: string
   xUrl: string
+  githubUrl: string
+  connpassUrl: string
+  linkedinUrl: string
+  nintendoUrl: string
+  steamUrl: string
+  gitlabUrl: string
+  niconicoUrl: string
+  mixi2Url: string
+  misskeyUrl: string
+  blueskyUrl: string
+  mastodonUrl: string
+  annictUrl: string
 }
 
 export interface SocialLink {

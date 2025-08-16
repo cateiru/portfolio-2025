@@ -10,6 +10,18 @@ export function createTerminalCommands(profile: ProfileData): TerminalCommand[] 
   profile   - プロフィール情報を表示
   blog      - ブログURLを表示
   x         - X (Twitter) URLを表示
+  github    - GitHubプロフィールURLを表示
+  linkedin  - LinkedInプロフィールURLを表示
+  steam     - SteamプロフィールURLを表示
+  nintendo  - Nintendo友達コードを表示
+  connpass  - ConnpassプロフィールURLを表示
+  gitlab    - GitLabプロフィールURLを表示
+  niconico  - ニコニコ動画プロフィールURLを表示
+  mixi2     - Mixi2プロフィールURLを表示
+  misskey   - Misskey.ioプロフィールURLを表示
+  bluesky   - BlueskyプロフィールURLを表示
+  mastodon  - MastodonプロフィールURLを表示
+  annict    - AnnictプロフィールURLを表示
   brand     - ブランドカラー情報を表示
   theme     - テーマを変更 (dark/light/system)`
       },
@@ -96,7 +108,9 @@ export function createTerminalCommands(profile: ProfileData): TerminalCommand[] 
       name: "ls",
       description: "利用可能な情報一覧を表示",
       execute: () => {
-        return `profile    blog       x          twitter`
+        return `profile    blog       x          twitter    github     connpass
+linkedin   nintendo   steam      gitlab     niconico   mixi2
+misskey    bluesky    mastodon   annict`
       },
     },
     {
@@ -173,6 +187,90 @@ ${profile.name}   console  -                ${new Date().toLocaleTimeString("ja-
         localStorage.setItem("theme", subcommand)
 
         return `テーマを '${subcommand}' に変更しました`
+      },
+    },
+    {
+      name: "github",
+      description: "GitHubプロフィールURLを表示",
+      execute: () => {
+        return profile.githubUrl
+      },
+    },
+    {
+      name: "connpass",
+      description: "ConnpassプロフィールURLを表示",
+      execute: () => {
+        return profile.connpassUrl
+      },
+    },
+    {
+      name: "linkedin",
+      description: "LinkedInプロフィールURLを表示",
+      execute: () => {
+        return profile.linkedinUrl
+      },
+    },
+    {
+      name: "nintendo",
+      description: "Nintendo友達コードを表示",
+      execute: () => {
+        return profile.nintendoUrl
+      },
+    },
+    {
+      name: "steam",
+      description: "SteamプロフィールURLを表示",
+      execute: () => {
+        return profile.steamUrl
+      },
+    },
+    {
+      name: "gitlab",
+      description: "GitLabプロフィールURLを表示",
+      execute: () => {
+        return profile.gitlabUrl
+      },
+    },
+    {
+      name: "niconico",
+      description: "ニコニコ動画プロフィールURLを表示",
+      execute: () => {
+        return profile.niconicoUrl
+      },
+    },
+    {
+      name: "mixi2",
+      description: "Mixi2プロフィールURLを表示",
+      execute: () => {
+        return profile.mixi2Url
+      },
+    },
+    {
+      name: "misskey",
+      description: "Misskey.ioプロフィールURLを表示",
+      execute: () => {
+        return profile.misskeyUrl
+      },
+    },
+    {
+      name: "bluesky",
+      description: "BlueskyプロフィールURLを表示",
+      execute: () => {
+        return profile.blueskyUrl
+      },
+    },
+    {
+      name: "mastodon",
+      description: "MastodonプロフィールURLを表示",
+      execute: () => {
+        return profile.mastodonUrl
+      },
+    },
+    {
+      name: "annict",
+      description: "AnnictプロフィールURLを表示",
+      execute: () => {
+        return profile.annictUrl
       },
     },
   ]
