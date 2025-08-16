@@ -1,0 +1,56 @@
+/* Terminal input styles */
+.terminal-input-form {
+  margin-top: 8px;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-input-container {
+  flex: 1;
+  position: relative;
+}
+
+.terminal-input-text {
+  color: var(--terminal-text-bright);
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre;
+  user-select: text;
+}
+
+.terminal-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: transparent;
+  z-index: 10;
+}
+
+.terminal-cursor {
+  color: var(--terminal-text);
+  animation: blink 1s infinite;
+  font-weight: normal;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}

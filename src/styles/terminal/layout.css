@@ -1,0 +1,35 @@
+/* Layout adjustments for terminal */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--terminal-background);
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+}
+
+.layout-header {
+  display: none;
+}
+
+.layout-footer {
+  display: none;
+}
+
+/* Theme toggle adjustments for terminal theme */
+.theme-toggle {
+  background: var(--nord1);
+  border: 1px solid var(--nord3);
+  color: var(--terminal-text);
+
+  &:hover {
+    background: var(--nord2);
+    border-color: var(--terminal-prompt);
+  }
+}

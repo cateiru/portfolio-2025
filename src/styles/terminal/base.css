@@ -1,0 +1,38 @@
+/* Terminal base styles */
+.terminal {
+  width: 100vw;
+  height: 100vh;
+  background: var(--terminal-background);
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+  color: var(--terminal-text);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  display: none;
+}
+
+.terminal-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--terminal-scrollbar) transparent;
+  user-select: text;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--terminal-scrollbar);
+    border-radius: 4px;
+  }
+}

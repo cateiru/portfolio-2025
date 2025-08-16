@@ -1,0 +1,20 @@
+/* Responsive design for terminal */
+@media (max-width: 768px) {
+  .terminal {
+    font-size: 13px;
+
+    .terminal-body {
+      padding: 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    font-size: 12px;
+
+    .terminal-body {
+      padding: 8px;
+    }
+  }
+}
