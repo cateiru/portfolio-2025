@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio 2025
 
-## Getting Started
+ターミナル風のインタラクティブなポートフォリオサイトです。Next.js 15を使用し、Nordテーマの美しい色彩でターミナルエミュレーターを実装しています。
 
-First, run the development server:
+## 🚀 特徴
+
+- **ターミナルエミュレーター**: リアルなUnix風コマンドライン体験
+- **Nordテーマ**: 洗練された北欧風カラーパレット
+- **インタラクティブ**: キーボードナビゲーションとコマンド履歴
+- **レスポンシブデザイン**: 全デバイス対応
+- **高速**: Next.js 15 + Turbopackによる最適化
+
+## 🎯 利用可能なコマンド
+
+| コマンド | 説明 |
+|---------|------|
+| `help` | 利用可能なコマンド一覧を表示 |
+| `profile` | プロフィール情報を表示 |
+| `blog` | ブログリンクを表示 |
+| `x` / `twitter` | Twitterプロフィールを表示 |
+| `brand` | ブランドロゴを表示 |
+| `whoami` | ユーザー情報を表示 |
+| `date` | 現在の日時を表示 |
+| `ls` | ディレクトリ内容を表示 |
+| `w` | 現在のユーザーセッション情報を表示 |
+| `pwd` | 現在のディレクトリパスを表示 |
+| `echo [text]` | テキストを出力 |
+| `clear` | ターミナル画面をクリア |
+| `exit` | ターミナルを終了 |
+
+## 🛠️ 開発環境のセットアップ
+
+### 必要な環境
+
+- Node.js 18.17以上
+- pnpm
+
+### インストール
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# リポジトリをクローン
+git clone <repository-url>
+cd portfolio-2025
+
+# 依存関係をインストール
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 開発サーバーの起動
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# 開発サーバー起動（Turbopack使用）
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いてターミナルをお試しください。
 
-## Learn More
+## 📦 ビルドとデプロイ
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# プロダクションビルド
+pnpm build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# プロダクションサーバー起動
+pnpm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧹 コード品質管理
 
-## Deploy on Vercel
+このプロジェクトはBiome v2を使用してコードフォーマットとリンティングを行います。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# 全体チェック
+pnpm biome:check
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# フォーマット実行
+pnpm biome:format
+
+# リンティング実行
+pnpm biome:lint
+
+# 自動修正適用
+pnpm biome:fix
+
+# 従来のESLint/Prettier（Biome推奨のため非推奨）
+pnpm lint
+```
+
+## 🎨 技術スタック
+
+- **フレームワーク**: Next.js 15
+- **言語**: TypeScript
+- **スタイリング**: PostCSS + CSS Modules
+- **テーマ**: [Nord Color Palette](https://www.nordtheme.com)
+- **コード品質**: Biome v2
+- **パッケージマネージャー**: pnpm
+
+## 🏗️ プロジェクト構造
+
+```
+src/
+├── app/                 # Next.js App Router
+├── components/          # Reactコンポーネント
+│   └── Terminal.tsx     # メインターミナルコンポーネント
+├── styles/              # スタイルシート
+│   ├── terminal/        # ターミナル固有スタイル
+│   ├── terminal.css     # メインターミナルスタイル
+│   └── variables.css    # CSS変数（Nordテーマ）
+├── types/               # TypeScript型定義
+├── utils/               # ユーティリティ関数
+│   ├── logo.ts          # ASCIIアートロゴ
+│   └── terminal-utils.ts # ターミナル関連ユーティリティ
+└── ...
+```
+
+## ⚙️ カスタマイズ
+
+### プロフィール情報の更新
+
+`src/app/page.tsx`の`profileData`オブジェクトを編集してプロフィール情報を変更できます。
+
+### 新しいコマンドの追加
+
+`src/utils/terminal-commands.ts`にコマンドを追加できます：
+
+```typescript
+{
+  name: 'mycommand',
+  description: '新しいコマンドの説明',
+  execute: (args?: string[]) => {
+    return 'コマンドの実行結果'
+  }
+}
+```
+
+## 🎯 デザインシステム
+
+### Nord カラーパレット
+
+- **Polar Night**: `#2e3440` (背景)
+- **Snow Storm**: `#d8dee9` (テキスト)
+- **Aurora Green**: `#a3be8c` (プロンプト)
+- **Frost Blue**: 青色グラデーション（アクセント）
+
+## 📄 ライセンス
+
+このプロジェクトはMITライセンスのもとで公開されています。
+
+## 🤝 コントリビューション
+
+プルリクエストやイシューは歓迎です。コントリビューションの前に、コード品質チェックを実行してください：
+
+```bash
+pnpm biome:check
+pnpm build
+```
