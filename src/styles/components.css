@@ -154,6 +154,99 @@
   border-top: 1px solid var(--border);
 }
 
+/* 404 Not Found Page styles */
+
+.not-found-terminal {
+  background: var(--terminal-background);
+  color: var(--terminal-text);
+  font-family: var(--font-family-mono);
+  padding: var(--spacing-8);
+  width: 100vw;
+  box-shadow: var(--shadow-md);
+}
+
+.not-found-header {
+  margin-bottom: var(--spacing-6);
+}
+
+.not-found-prompt {
+  color: var(--terminal-prompt);
+  font-weight: 600;
+}
+
+.not-found-path {
+  color: var(--terminal-text);
+  margin: 0 var(--spacing-2);
+}
+
+.not-found-command {
+  color: var(--terminal-text-bright);
+}
+
+.not-found-output {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.not-found-error {
+  color: var(--terminal-error);
+  margin-bottom: var(--spacing-4);
+}
+
+.not-found-ascii {
+  text-align: left;
+  margin: var(--spacing-6) 0;
+}
+
+.not-found-ascii p {
+  color: var(--terminal-gradient-2);
+  font-size: var(--font-size-sm);
+  line-height: 1.2;
+  margin: 0;
+  white-space: pre;
+}
+
+.not-found-message {
+  text-align: left;
+  margin: var(--spacing-6) 0;
+}
+
+.not-found-message p {
+  margin: var(--spacing-2) 0;
+  color: var(--terminal-text);
+}
+
+.not-found-message p:first-child {
+  color: var(--terminal-text-bright);
+  font-weight: 600;
+}
+
+.not-found-navigation {
+  text-align: left;
+  margin-top: var(--spacing-8);
+}
+
+.not-found-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--terminal-prompt);
+  color: var(--terminal-background);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: var(--font-family-mono);
+}
+
+.not-found-link:hover {
+  background: var(--terminal-gradient-2);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
 /* Responsive design */
 @media (max-width: 640px) {
   .profile-card {
@@ -172,6 +265,18 @@
   }
 
   .layout-main {
+    padding: var(--spacing-4);
+  }
+
+  .not-found-terminal {
+    padding: var(--spacing-6);
+  }
+
+  .not-found-ascii pre {
+    font-size: 0.75rem;
+  }
+
+  .not-found-help {
     padding: var(--spacing-4);
   }
 }
