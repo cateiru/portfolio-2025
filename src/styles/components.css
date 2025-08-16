@@ -130,49 +130,12 @@
   text-align: center;
 }
 
-/* ThemeToggle styles */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-}
-
-.theme-toggle:hover {
-  background: var(--border);
-  border-color: var(--accent);
-}
-
-.theme-toggle:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.theme-toggle-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--foreground);
-}
-
 /* Layout styles */
 .layout {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: var(--background);
-}
-
-.layout-header {
-  padding: var(--spacing-4);
-  display: flex;
-  justify-content: flex-end;
 }
 
 .layout-main {

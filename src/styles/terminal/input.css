@@ -39,7 +39,7 @@
 }
 
 .terminal-cursor {
-  color: var(--terminal-text);
+  color: var(--terminal-cursor);
   animation: blink 1s infinite;
   font-weight: normal;
 }

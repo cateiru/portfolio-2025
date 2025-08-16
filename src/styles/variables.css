@@ -1,24 +1,23 @@
 :root {
-  /* Nord Theme Colors */
-
-  /* Polar Night (Dark Backgrounds) */
+  /* Nord Theme Colors - Complete Palette */
+  /* Polar Night */
   --nord0: #2e3440; /* Darkest background */
   --nord1: #3b4252; /* Dark background */
   --nord2: #434c5e; /* Medium dark background */
   --nord3: #4c566a; /* Light dark background */
 
-  /* Snow Storm (Light/Neutral) */
+  /* Snow Storm */
   --nord4: #d8dee9; /* Light text */
   --nord5: #e5e9f0; /* Lighter text */
   --nord6: #eceff4; /* Lightest text */
 
-  /* Frost (Blue/Teal Accents) */
+  /* Frost */
   --nord7: #8fbcbb; /* Teal */
   --nord8: #88c0d0; /* Light blue */
   --nord9: #81a1c1; /* Medium blue */
   --nord10: #5e81ac; /* Dark blue */
 
-  /* Aurora (Vibrant Accents) */
+  /* Aurora */
   --nord11: #bf616a; /* Red */
   --nord12: #d08770; /* Orange */
   --nord13: #ebcb8b; /* Yellow */
@@ -32,7 +31,7 @@
   --terminal-prompt: var(--nord14);
   --terminal-link: var(--nord8);
   --terminal-link-hover: var(--nord9);
-  --terminal-cursor: var(--nord14);
+  --terminal-cursor: var(--nord4);
   --terminal-scrollbar: var(--nord3);
 
   /* Gradient Colors */
@@ -41,43 +40,21 @@
   --terminal-gradient-3: var(--nord9);
   --terminal-gradient-4: var(--nord10);
 
-  /* Claude Code inspired color palette (kept for compatibility) */
-  --color-background-light: 255 255 255;
-  --color-background-dark: 9 9 11;
-  --color-foreground-light: 23 23 23;
-  --color-foreground-dark: 237 237 237;
+  /* Extended Semantic Colors */
+  --terminal-error: var(--nord11); /* Red for errors */
+  --terminal-warning: var(--nord12); /* Orange for warnings */
+  --terminal-info: var(--nord13); /* Yellow for info */
+  --terminal-success: var(--nord14); /* Green for success */
+  --terminal-accent: var(--nord15); /* Purple for accents */
+  --terminal-muted: var(--nord5); /* Muted text */
 
-  /* Muted colors */
-  --color-muted-light: 245 245 245;
-  --color-muted-dark: 24 24 27;
-  --color-muted-foreground-light: 115 115 115;
-  --color-muted-foreground-dark: 161 161 170;
-
-  /* Border colors */
-  --color-border-light: 229 229 229;
-  --color-border-dark: 39 39 42;
-
-  /* Accent colors (earth tones) */
-  --color-accent-light: 139 92 46;
-  --color-accent-dark: 234 179 8;
-  --color-accent-foreground-light: 255 255 255;
-  --color-accent-foreground-dark: 39 39 42;
-
-  /* Card colors */
-  --color-card-light: 255 255 255;
-  --color-card-dark: 39 39 42;
-  --color-card-foreground-light: 23 23 23;
-  --color-card-foreground-dark: 250 250 250;
-
-  /* Font families */
+  /* Typography */
   --font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-family-mono:
     "Space Mono", "M PLUS 1 Code", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
     monospace;
 
-  /* Font sizes */
-  --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.125rem;
@@ -86,67 +63,53 @@
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
 
-  /* Spacing */
-  --spacing-1: 0.25rem;
+  /* Layout */
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
   --spacing-4: 1rem;
   --spacing-6: 1.5rem;
   --spacing-8: 2rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
-  --spacing-20: 5rem;
-  --spacing-24: 6rem;
 
-  /* Border radius */
-  --radius-sm: 0.125rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
 
-  /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* Light theme (default) */
-:root {
-  --background: rgb(var(--color-background-light));
-  --foreground: rgb(var(--color-foreground-light));
-  --muted: rgb(var(--color-muted-light));
-  --muted-foreground: rgb(var(--color-muted-foreground-light));
-  --border: rgb(var(--color-border-light));
-  --accent: rgb(var(--color-accent-light));
-  --accent-foreground: rgb(var(--color-accent-foreground-light));
-  --card: rgb(var(--color-card-light));
-  --card-foreground: rgb(var(--color-card-foreground-light));
-}
-
-/* Dark theme */
-[data-theme="dark"] {
-  --background: rgb(var(--color-background-dark));
-  --foreground: rgb(var(--color-foreground-dark));
-  --muted: rgb(var(--color-muted-dark));
-  --muted-foreground: rgb(var(--color-muted-foreground-dark));
-  --border: rgb(var(--color-border-dark));
-  --accent: rgb(var(--color-accent-dark));
-  --accent-foreground: rgb(var(--color-accent-foreground-dark));
-  --card: rgb(var(--color-card-dark));
-  --card-foreground: rgb(var(--color-card-foreground-dark));
-}
-
-/* Auto dark mode support */
-@media (prefers-color-scheme: dark) {
+/* Light theme for users who prefer light mode */
+@media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
-    --background: rgb(var(--color-background-dark));
-    --foreground: rgb(var(--color-foreground-dark));
-    --muted: rgb(var(--color-muted-dark));
-    --muted-foreground: rgb(var(--color-muted-foreground-dark));
-    --border: rgb(var(--color-border-dark));
-    --accent: rgb(var(--color-accent-dark));
-    --accent-foreground: rgb(var(--color-accent-foreground-dark));
-    --card: rgb(var(--color-card-dark));
-    --card-foreground: rgb(var(--color-card-foreground-dark));
+    --terminal-background: var(--nord6);
+    --terminal-text: var(--nord1);
+    --terminal-text-bright: var(--nord0);
+    --terminal-prompt: var(--nord10);
+    --terminal-link: var(--nord9);
+    --terminal-link-hover: var(--nord10);
+    --terminal-cursor: var(--nord3);
+    --terminal-scrollbar: var(--nord4);
   }
+}
+
+/* Explicit theme overrides */
+[data-theme="light"] {
+  --terminal-background: var(--nord6);
+  --terminal-text: var(--nord1);
+  --terminal-text-bright: var(--nord0);
+  --terminal-prompt: var(--nord10);
+  --terminal-link: var(--nord9);
+  --terminal-link-hover: var(--nord10);
+  --terminal-cursor: var(--nord3);
+  --terminal-scrollbar: var(--nord4);
+}
+
+[data-theme="dark"] {
+  --terminal-background: var(--nord0);
+  --terminal-text: var(--nord4);
+  --terminal-text-bright: var(--nord6);
+  --terminal-prompt: var(--nord14);
+  --terminal-link: var(--nord8);
+  --terminal-link-hover: var(--nord9);
+  --terminal-cursor: var(--nord4);
+  --terminal-scrollbar: var(--nord3);
 }

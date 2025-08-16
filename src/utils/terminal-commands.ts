@@ -10,7 +10,8 @@ export function createTerminalCommands(profile: ProfileData): TerminalCommand[] 
   profile   - プロフィール情報を表示
   blog      - ブログURLを表示
   x         - X (Twitter) URLを表示
-  brand     - ブランドカラー情報を表示`
+  brand     - ブランドカラー情報を表示
+  theme     - テーマを変更 (dark/light/system)`
       },
     },
     {
@@ -134,6 +135,44 @@ ${profile.name}   console  -                ${new Date().toLocaleTimeString("ja-
       description: "現在のディレクトリパスを表示",
       execute: () => {
         return `/home/${profile.name.toLowerCase()}/portfolio`
+      },
+    },
+    {
+      name: "theme",
+      description: "テーマを変更 (dark/light/system)",
+      execute: (args: string[] | undefined) => {
+        if (!args || args.length === 0) {
+          return "エラー: テーマを指定してください。ヘルプ: theme --help"
+        }
+
+        const subcommand = args[0]
+
+        if (subcommand === "--help") {
+          return `テーマコマンド:
+  theme dark     - ダークテーマに変更
+  theme light    - ライトテーマに変更
+  theme system   - システムテーマに変更 (デフォルト)
+  theme --help   - このヘルプを表示`
+        }
+
+        if (!["dark", "light", "system"].includes(subcommand)) {
+          return `エラー: 無効なテーマ '${subcommand}'。利用可能: dark, light, system`
+        }
+
+        // テーマを適用
+        const root = document.documentElement
+        if (subcommand === "dark") {
+          root.setAttribute("data-theme", "dark")
+        } else if (subcommand === "light") {
+          root.setAttribute("data-theme", "light")
+        } else {
+          root.removeAttribute("data-theme")
+        }
+
+        // localStorageに保存
+        localStorage.setItem("theme", subcommand)
+
+        return `テーマを '${subcommand}' に変更しました`
       },
     },
   ]

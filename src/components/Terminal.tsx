@@ -23,6 +23,17 @@ export function Terminal({ profile }: TerminalProps) {
   const commands = createTerminalCommands(profile)
 
   useEffect(() => {
+    // 保存されたテーマを復元
+    const savedTheme = localStorage.getItem("theme") || "system"
+    const root = document.documentElement
+    if (savedTheme === "dark") {
+      root.setAttribute("data-theme", "dark")
+    } else if (savedTheme === "light") {
+      root.setAttribute("data-theme", "light")
+    } else {
+      root.removeAttribute("data-theme")
+    }
+
     // 初期メッセージを表示
     const logo = generateWelcomeLogo()
     const logoOutput: TerminalOutput = {
