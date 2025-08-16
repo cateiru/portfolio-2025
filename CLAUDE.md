@@ -18,7 +18,7 @@ pnpm build
 # プロダクションサーバー起動
 pnpm start
 
-# ESLintチェック（Next.js固有ルールのみ）
+# コードリンティング（Biome使用）
 pnpm lint
 
 # Biomeでコードフォーマット・リント（推奨）
@@ -84,8 +84,7 @@ pnpm biome:fix        # 自動修正適用
 
 このプロジェクトはBiome v2とPostCSSを使用してコードフォーマットとリンティングを行います：
 
-- **Biome**: 高速なJavaScript/TypeScriptフォーマッター・リンター（推奨）
-- **ESLint**: Next.js固有のルールのみ（Biomeと重複するルールは無効化済み）
+- **Biome**: 高速なJavaScript/TypeScriptフォーマッター・リンター
 - **PostCSS**: モダンCSS機能とautoprefixerを提供（`postcss.config.js`で設定）
   - postcss-import: CSS importの改善
   - postcss-nesting: CSS ネスト記法のサポート
