@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import type { ProfileData, TerminalOutput } from "@/types/profile"
 import { generateWelcomeLogo } from "@/utils/logo"
 import { createTerminalCommands, findCommand } from "@/utils/terminal-commands"
@@ -42,9 +42,9 @@ Type 'help' to see available commands.`,
   }, [profile.name])
 
   useEffect(() => {
-    // 入力フィールドにフォーカスを当てる
+    // 入力フィールドにフォーカスを当てる（スクロールしない）
     if (inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus({ preventScroll: true })
     }
   }, [])
 
@@ -55,9 +55,9 @@ Type 'help' to see available commands.`,
       const selection = window.getSelection()
       const hasTextSelection = selection && selection.toString().length > 0
 
-      // テキスト選択中でない場合のみフォーカスを当てる
+      // テキスト選択中でない場合のみフォーカスを当てる（スクロールしない）
       if (!hasTextSelection && inputRef.current) {
-        inputRef.current.focus()
+        inputRef.current.focus({ preventScroll: true })
       }
     }
 
@@ -68,7 +68,7 @@ Type 'help' to see available commands.`,
         const hasTextSelection = selection && selection.toString().length > 0
 
         if (!hasTextSelection && inputRef.current) {
-          inputRef.current.focus()
+          inputRef.current.focus({ preventScroll: true })
         }
       }, 10) // 少し遅延させて選択状態を正確に取得
     }
@@ -76,9 +76,9 @@ Type 'help' to see available commands.`,
     document.addEventListener("click", handleClick)
     document.addEventListener("mouseup", handleMouseUp)
 
-    // 初期フォーカス
+    // 初期フォーカス（スクロールしない）
     if (inputRef.current) {
-      inputRef.current.focus()
+      inputRef.current.focus({ preventScroll: true })
     }
 
     return () => {
@@ -87,29 +87,31 @@ Type 'help' to see available commands.`,
     }
   }, [])
 
-  useEffect(() => {
-    // スクロールを最下部に移動
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+  // スクロール処理の共通関数
+  const scrollToInputIfNeeded = useCallback(() => {
+    if (!inputFormRef.current || !terminalRef.current) return
+
+    const isVisible = isElementVisible(inputFormRef.current, terminalRef.current)
+    if (!isVisible) {
+      scrollToElement(inputFormRef.current)
     }
   }, [])
 
+  // 文字入力時の自動スクロール
   useEffect(() => {
-    // コマンド入力時の自動スクロール（デバウンス付き）
-    const scrollToInputIfNeeded = () => {
-      if (!inputFormRef.current || !terminalRef.current) return
-
-      const isVisible = isElementVisible(inputFormRef.current, terminalRef.current)
-      if (!isVisible) {
-        scrollToElement(inputFormRef.current)
-      }
+    if (currentCommand.length > 0) {
+      const timeoutId = setTimeout(scrollToInputIfNeeded, 100)
+      return () => clearTimeout(timeoutId)
     }
+  }, [currentCommand, scrollToInputIfNeeded])
 
-    // デバウンス処理
-    const timeoutId = setTimeout(scrollToInputIfNeeded, 100)
-
-    return () => clearTimeout(timeoutId)
-  }, [])
+  // コマンド実行時の自動スクロール
+  useEffect(() => {
+    if (outputs.length > 0) {
+      const timeoutId = setTimeout(scrollToInputIfNeeded, 100)
+      return () => clearTimeout(timeoutId)
+    }
+  }, [outputs, scrollToInputIfNeeded])
 
   const executeCommand = (commandInput: string) => {
     const trimmedCommand = commandInput.trim()
