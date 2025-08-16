@@ -127,7 +127,7 @@
 .terminal-result pre {
   margin: 0;
   font-family: inherit;
-}
+}terminal-cursor
 
 .terminal-output[data-id="logo"] .terminal-result {
   text-align: left;
@@ -195,7 +195,7 @@
 }
 
 .terminal-cursor {
-  color: var(--terminal-cursor);
+  color: var(--terminal-text);
   animation: blink 1s infinite;
   font-weight: normal;
 }
