@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "biome:check": "biome check .",
+    "biome:format": "biome format --write .",
+    "biome:lint": "biome lint .",
+    "biome:fix": "biome check --write ."
   },
   "dependencies": {
     "next": "15.4.6",
@@ -15,6 +19,7 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.0",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",

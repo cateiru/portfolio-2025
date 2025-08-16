@@ -12,7 +12,7 @@ export interface SocialLink {
   icon?: string
 }
 
-export type Theme = 'light' | 'dark' | 'system'
+export type Theme = "light" | "dark" | "system"
 
 export interface TerminalOutput {
   id: string

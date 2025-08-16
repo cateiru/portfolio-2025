@@ -127,12 +127,17 @@
 .terminal-result pre {
   margin: 0;
   font-family: inherit;
-}terminal-cursor
-
-.terminal-output[data-id="logo"] .terminal-result {
+}
+terminal-cursor .terminal-output[data-id="logo"] .terminal-result {
   text-align: left;
   margin-bottom: 16px;
-  background: linear-gradient(45deg, var(--terminal-gradient-1), var(--terminal-gradient-2), var(--terminal-gradient-3), var(--terminal-gradient-4));
+  background: linear-gradient(
+    45deg,
+    var(--terminal-gradient-1),
+    var(--terminal-gradient-2),
+    var(--terminal-gradient-3),
+    var(--terminal-gradient-4)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -147,7 +152,8 @@
 }
 
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -201,10 +207,12 @@
 }
 
 @keyframes blink {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+  51%,
+  100% {
     opacity: 0;
   }
 }

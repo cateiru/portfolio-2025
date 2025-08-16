@@ -2,20 +2,20 @@
   /* Nord Theme Colors */
 
   /* Polar Night (Dark Backgrounds) */
-  --nord0: #2e3440;  /* Darkest background */
-  --nord1: #3b4252;  /* Dark background */
-  --nord2: #434c5e;  /* Medium dark background */
-  --nord3: #4c566a;  /* Light dark background */
+  --nord0: #2e3440; /* Darkest background */
+  --nord1: #3b4252; /* Dark background */
+  --nord2: #434c5e; /* Medium dark background */
+  --nord3: #4c566a; /* Light dark background */
 
   /* Snow Storm (Light/Neutral) */
-  --nord4: #d8dee9;  /* Light text */
-  --nord5: #e5e9f0;  /* Lighter text */
-  --nord6: #eceff4;  /* Lightest text */
+  --nord4: #d8dee9; /* Light text */
+  --nord5: #e5e9f0; /* Lighter text */
+  --nord6: #eceff4; /* Lightest text */
 
   /* Frost (Blue/Teal Accents) */
-  --nord7: #8fbcbb;  /* Teal */
-  --nord8: #88c0d0;  /* Light blue */
-  --nord9: #81a1c1;  /* Medium blue */
+  --nord7: #8fbcbb; /* Teal */
+  --nord8: #88c0d0; /* Light blue */
+  --nord9: #81a1c1; /* Medium blue */
   --nord10: #5e81ac; /* Dark blue */
 
   /* Aurora (Vibrant Accents) */
@@ -72,7 +72,9 @@
   /* Font families */
   --font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-family-mono: "Space Mono", "M PLUS 1 Code", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  --font-family-mono:
+    "Space Mono", "M PLUS 1 Code", ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
+    monospace;
 
   /* Font sizes */
   --font-size-xs: 0.75rem;
