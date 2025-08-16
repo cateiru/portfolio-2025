@@ -21,8 +21,8 @@ export default function NotFound() {
       <div className="not-found-output">
         <p className="not-found-error">ls: cannot access '/page/not/found': No such file or directory</p>
         <div className="not-found-ascii">
-          {NOT_FOUND_AA.split("\n").map((line, index) => {
-            return <p key={`not-found-aa-${index}`}>{convertTextContent(line)}</p>
+          {NOT_FOUND_AA.split("\n").map(line => {
+            return <p key={`not-found-aa-${line}`}>{convertTextContent(line)}</p>
           })}
         </div>
         <div className="not-found-message">
