@@ -43,10 +43,11 @@ pnpm biome:fix        # 自動修正適用
   - テキスト: `#d8dee9` (Snow Storm)
   - プロンプト: `#a3be8c` (Aurora Green)
   - アクセント: Frost系の青色グラデーション
-- **CSS構造**: `src/styles/`配下に分離
-  - `terminal.css`: ターミナル固有のスタイル
+- **CSS構造**: `src/styles/`配下にPostCSSを使用した分離
+  - `terminal.css`: PostCSS importを使用したモジュール統合ファイル
+  - `terminal/`: ターミナル固有スタイルのモジュール分割（base, components, input, effects, layout, responsive）
   - `components.css`: 汎用コンポーネントスタイル
-  - `variables.css`: CSS変数定義
+  - `variables.css`: CSS変数定義（Nordテーマ色）
 
 ### データ構造
 - **ProfileData**: プロフィール情報の型定義 (`src/types/profile.ts`)
@@ -81,10 +82,14 @@ pnpm biome:fix        # 自動修正適用
 
 ## コード品質とフォーマット
 
-このプロジェクトはBiome v2を使用してコードフォーマットとリンティングを行います：
+このプロジェクトはBiome v2とPostCSSを使用してコードフォーマットとリンティングを行います：
 
 - **Biome**: 高速なJavaScript/TypeScriptフォーマッター・リンター（推奨）
 - **ESLint**: Next.js固有のルールのみ（Biomeと重複するルールは無効化済み）
+- **PostCSS**: モダンCSS機能とautoprefixerを提供（`postcss.config.js`で設定）
+  - postcss-import: CSS importの改善
+  - postcss-nesting: CSS ネスト記法のサポート
+  - postcss-preset-env: モダンCSS機能とブラウザ互換性
 - **設定ファイル**: `biome.json`でプロジェクト固有の設定を管理
 - **VS Code**: 保存時の自動フォーマット設定済み（`.vscode/settings.json`）
 
