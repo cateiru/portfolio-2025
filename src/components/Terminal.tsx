@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { TerminalOutput, ProfileData } from '@/types/profile'
 import { generateWelcomeLogo } from '@/utils/logo'
 import { createTerminalCommands, findCommand } from '@/utils/terminal-commands'
-import { convertUrlsToLinks, isElementVisible, scrollToElement } from '@/utils/terminal-utils'
+import { convertTextContent, isElementVisible, scrollToElement } from '@/utils/terminal-utils'
 
 interface TerminalProps {
   profile: ProfileData
@@ -207,7 +207,7 @@ Type 'help' to see available commands.`,
             {output.output && (
               <div className="terminal-result">
                 {output.output.split('\n').map((line, index) => (
-                  <div key={index}>{convertUrlsToLinks(line)}</div>
+                  <div key={index}>{convertTextContent(line)}</div>
                 ))}
               </div>
             )}

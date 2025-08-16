@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   background: var(--terminal-background);
-  font-family: 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  font-family: var(--font-family-mono);
   font-size: 14px;
   color: var(--terminal-text);
   overflow: hidden;
@@ -106,6 +106,22 @@
 .terminal-link:hover {
   color: var(--terminal-link-hover);
   text-decoration: underline;
+}
+
+.color-code-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.color-dot {
+  font-weight: bold;
+  text-shadow: 0 0 3px currentColor;
+}
+
+.color-code {
+  color: var(--terminal-text);
+  font-family: inherit;
 }
 
 .terminal-result pre {
@@ -234,7 +250,7 @@
   .terminal {
     font-size: 13px;
   }
-  
+
   .terminal-body {
     padding: 12px;
   }
@@ -244,7 +260,7 @@
   .terminal {
     font-size: 12px;
   }
-  
+
   .terminal-body {
     padding: 8px;
   }
