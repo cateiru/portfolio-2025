@@ -13,7 +13,7 @@
     "biome:fix": "biome check --write ."
   },
   "dependencies": {
-    "next": "15.4.6",
+    "next": "16.1.5",
     "react": "19.1.0",
     "react-aria-components": "^1.11.0",
     "react-dom": "19.1.0"
